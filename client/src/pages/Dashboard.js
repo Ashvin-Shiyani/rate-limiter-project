@@ -59,47 +59,55 @@ function Dashboard() {
         navigate('/login')
     }
     return (
-        <div className='dashboard'>
-            <div className='dashboard-header'>
-                <h1>Rate Limiter Dashboard</h1>
-                <button onClick={handleLogout} className='logout-btn'>Logout</button>
+        <div>
+            <div className='wave-container'>
+                <div className='wave wave1'></div>
+                <div className='wave wave2'></div>
+                <div className='wave wave3'></div>
             </div>
+            <div className='dashboard page-enter'>
+                <div className='dashboard-header'>
+                    <h1>Rate Limiter Dashboard</h1>
+                    <button onClick={handleLogout} className='logout-btn'>Logout</button>
+                </div>
 
-            {message && <p className='message'>{message}</p>}
+                {message && <p className='message'>{message}</p>}
 
-            <div className='generate-section'>
-                <h2>Generate New API Key</h2>
-                <select value={algorithm} onChange={(e) => setAlgorithm(e.target.value)}>
-                    <option value='sliding_window'>Sliding Window</option>
-                    <option value='fixed_window'>Fixed Window</option>
-                    <option value='token_bucket'>Token Bucket</option>
-                </select>
-                <select value={tier} onChange={(e) => setTier(e.target.value)}>
-                    <option value='free'>Free (100 req/min)</option>
-                    <option value='silver'>Silver (200 req/min)</option>
-                    <option value='gold'>Gold (500 req/min)</option>
-                </select>
-                <button onClick={generateKey} className='generate-btn'>Generate Key</button>
-            </div>
+                <div className='generate-section'>
+                    <h2>Generate New API Key</h2>
+                    <select value={algorithm} onChange={(e) => setAlgorithm(e.target.value)}>
+                        <option value='sliding_window'>Sliding Window</option>
+                        <option value='fixed_window'>Fixed Window</option>
+                        <option value='token_bucket'>Token Bucket</option>
+                    </select>
+                    <select value={tier} onChange={(e) => setTier(e.target.value)}>
+                        <option value='free'>Free (100 req/min)</option>
+                        <option value='silver'>Silver (200 req/min)</option>
+                        <option value='gold'>Gold (500 req/min)</option>
+                    </select>
+                    <button onClick={generateKey} className='generate-btn'>Generate Key</button>
+                </div>
 
-            <div className='keys-section'>
-                <h2>Your API Keys</h2>
-                {keys.length === 0 ? (
-                    <p>No API keys yet. Generate one above!</p>
-                ) : (
-                    keys.map((key) => (
-                        <div key={key.id} className='key-card'>
-                            <p><strong>Key:</strong> {key.api_key}</p>
-                            <p><strong>Algorithm:</strong> {key.algorithm}</p>
-                            <p><strong>Limit:</strong> {key.limit_count} req/{key.window_seconds}s</p>
-                            <p><strong>Created:</strong> {new Date(key.created_at).toLocaleDateString()}</p>
-                            <button onClick={() => deleteKey(key.id)} className='delete-btn'>Delete</button>
-                        </div>
-                    ))
-                )}
+                <div className='keys-section'>
+                    <h2>Your API Keys</h2>
+                    {keys.length === 0 ? (
+                        <p>No API keys yet. Generate one above!</p>
+                    ) : (
+                        keys.map((key) => (
+                            <div key={key.id} className='key-card'>
+                                <p><strong>Key:</strong> {key.api_key}</p>
+                                <p><strong>Algorithm:</strong> {key.algorithm}</p>
+                                <p><strong>Limit:</strong> {key.limit_count} req/{key.window_seconds}s</p>
+                                <p><strong>Created:</strong> {new Date(key.created_at).toLocaleDateString()}</p>
+                                <button onClick={() => deleteKey(key.id)} className='delete-btn'>Delete</button>
+                            </div>
+                        ))
+                    )}
+                </div>
             </div>
         </div>
     )
+
 }
 
 export default Dashboard
