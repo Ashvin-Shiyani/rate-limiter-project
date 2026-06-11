@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 require('dotenv').config()
 
 const db = require('./config/db')
@@ -12,6 +13,11 @@ const app = express()
 const PORT = process.env.PORT || 3000
 
 app.use(express.json())
+app.use(cors({
+    origin: 'https://rate-limiter-client.onrender.com',
+    credentials: true
+}))
+
 app.use('/auth', authRoutes)
 app.use('/keys', keysRoutes)
 app.get('/test', rateLimiter, (req, res) => {
