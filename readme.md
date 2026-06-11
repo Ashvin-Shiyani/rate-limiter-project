@@ -9,9 +9,9 @@ A production-ready rate limiting microservice built with Node.js, Redis, and Pos
 
 ## 📸 Screenshots
 
-![Register](screenshots/register.jpeg)
-![Login](screenshots/login.jpeg)
-![Dashboard](screenshots/dashboard.jpeg)
+![Register](screenshots/Register.jpeg)
+![Login](screenshots/Login.jpeg)
+![Dashboard](screenshots/Dashboard.jpeg)
 
 ---
 
