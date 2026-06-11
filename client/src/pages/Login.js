@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+import a from '../api'
 import { useNavigate, Link } from 'react-router-dom'
 
 function Login() {
@@ -11,7 +11,7 @@ function Login() {
     const handleLogin = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('/auth/login', { email, password })
+            const response = await api.post('/auth/login', { email, password })
             localStorage.setItem('token', response.data.token)
             navigate('/dashboard')
         } catch (err) {
