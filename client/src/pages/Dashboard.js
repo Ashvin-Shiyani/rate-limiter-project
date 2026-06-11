@@ -65,6 +65,7 @@ function Dashboard() {
                 <div className='wave wave2'></div>
                 <div className='wave wave3'></div>
             </div>
+            
             <div className='dashboard page-enter'>
                 <div className='dashboard-header'>
                     <h1>Rate Limiter Dashboard</h1>
