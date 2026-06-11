@@ -1,6 +1,6 @@
 const db = require('./db')
 
-const createTables = async () => {
+const initSchema = async () => {
     try {
         await db.query(`
             CREATE TABLE IF NOT EXISTS users (
@@ -27,12 +27,11 @@ const createTables = async () => {
         console.log('api_keys table created successfully')
 
         console.log('all tables created')
-        process.exit(0)
 
     } catch (err) {
         console.error('error creating tables:', err)
-        process.exit(1)
+        throw err  // let the caller handle it, don't kill the process
     }
 }
 
-createTables()
+module.exports = initSchema
