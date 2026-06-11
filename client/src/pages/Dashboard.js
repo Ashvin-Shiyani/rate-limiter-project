@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '../api'
 import { useNavigate } from 'react-router-dom'
 
 function Dashboard() {
@@ -17,7 +17,7 @@ function Dashboard() {
 
     const fetchKeys = async () => {
         try {
-            const response = await axios.get('/keys', {
+            const response = await api.get('/keys', {
                 headers: { Authorization: `Bearer ${token}` }
             })
             setKeys(response.data.keys)
@@ -31,7 +31,7 @@ function Dashboard() {
 
     const generateKey = async () => {
         try {
-            const response = await axios.post('/keys/generate',
+            const response = await api.post('/keys/generate',
                 { algorithm, tier },
                 { headers: { Authorization: `Bearer ${token}` } }
             )
@@ -44,7 +44,7 @@ function Dashboard() {
 
     const deleteKey = async (id) => {
         try {
-            await axios.delete(`/keys/${id}`, {
+            await api.delete(`/keys/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             })
             setMessage('API key deleted!')
@@ -58,6 +58,7 @@ function Dashboard() {
         localStorage.removeItem('token')
         navigate('/login')
     }
+
     return (
         <div>
             <div className='wave-container'>
@@ -108,7 +109,6 @@ function Dashboard() {
             </div>
         </div>
     )
-
 }
 
 export default Dashboard
