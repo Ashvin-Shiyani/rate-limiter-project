@@ -153,39 +153,37 @@ node src/index.js
 cd client && npm start
 ```
 
----
-
 ## 📁 Project Structure
 
+```
 rate-limiter-project/
 ├── src/
-│ ├── index.js # Express server entry point
-│ ├── config/
-│ │ ├── db.js # PostgreSQL connection
-│ │ ├── redis.js # Redis connection
-│ │ └── schema.js # Auto-creates tables on startup
-│ ├── routes/
-│ │ ├── auth.js # Register + login
-│ │ └── keys.js # API key CRUD
-│ ├── middleware/
-│ │ ├── auth.js # JWT verification
-│ │ └── rateLimiter.js # Core rate limiting logic
-│ └── algorithms/
-│ ├── fixedWindow.js
-│ ├── slidingWindow.js
-│ └── tokenBucket.js
+│   ├── index.js
+│   ├── config/
+│   │   ├── db.js
+│   │   ├── redis.js
+│   │   └── schema.js
+│   ├── routes/
+│   │   ├── auth.js
+│   │   └── keys.js
+│   ├── middleware/
+│   │   ├── auth.js
+│   │   └── rateLimiter.js
+│   └── algorithms/
+│       ├── fixedWindow.js
+│       ├── slidingWindow.js
+│       └── tokenBucket.js
 ├── scripts/
-│ └── tokenBucket.lua # Atomic Lua script for Redis
-└── client/ # React frontend
-└── src/
-├── App.js # Routing
-├── api.js # Axios instance with base URL
-└── pages/
-├── Login.js
-├── Register.js
-└── Dashboard.js
-
----
+│   └── tokenBucket.lua
+└── client/
+    └── src/
+        ├── App.js
+        ├── api.js
+        └── pages/
+            ├── Login.js
+            ├── Register.js
+            └── Dashboard.js
+```
 
 ## 👤 Author
 
